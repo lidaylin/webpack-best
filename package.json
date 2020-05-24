@@ -1,0 +1,31 @@
+{
+  "name": "webpack-best",
+  "version": "1.0.0",
+  "description": "webpack-best",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "@babel/runtime-corejs3": "^7.9.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lidaylin/webpack-best.git"
+  },
+  "author": "lidaylin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lidaylin/webpack-best/issues"
+  },
+  "homepage": "https://github.com/lidaylin/webpack-best#readme"
+}
