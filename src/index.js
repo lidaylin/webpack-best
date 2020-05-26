@@ -1,4 +1,7 @@
 //index.js
+import styles from './index.scss'
+
+console.log(styles, 'styles')
 class Animal {
     constructor(name) {
         this.name = name;
@@ -8,4 +11,5 @@ class Animal {
     }
 }
 
-const dog = new Animal('dog');ß
+const dog = new Animal('dog');
+console.log(333333333333)
