@@ -99,7 +99,7 @@ module.exports = {
     mode: 'development' | 'production' | 'none
 }
 ```
-mode=development 时，启动用 NamedChunksPlugin 和 NamedModulesPlugin
+mode=development 时，启动用 NamedChunksPlugin 和 NamedModulesPlugin  
 model=production 时， 启动用FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 UglifyJsPlugin
 
 ### **在浏览器中查看页面**
@@ -217,10 +217,10 @@ entry 字符串 数组或者对象
 
 ```
 ### **出口配置**
-output {
-    path //编译出来的代码
-    filename // 生成的文件名
-    publicPath // 生成的公共文件名，用于静态文件存在cdn的文件前缀
+output {  
+    path //编译出来的代码  
+    filename // 生成的文件名  
+    publicPath // 生成的公共文件名，用于静态文件存在cdn的文件前缀  
 }
 ### **每次打包前清空dist文件**
 
