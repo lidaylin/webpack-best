@@ -166,5 +166,65 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map' //开发环境下使用
 }
 ```
+在生产环境使用，source-map或者是none,使用source-map会生成一个.map文件，可以根据.map文件进行解析定位到源代码。
+
+### **如何处理样式文件**
+先安装
+```
+npm install style-loader less-loader css-loader postcss-loader autoprefixer less -D
+```
+然后配置
+```
+module.exports = {
+    {
+        test: /\.(sc|c)ss$/,
+        use: [
+            'style-loader', 
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: {
+                       localIdentName: '[path][name]__[local]--[hash:5]'
+                    }
+                }
+            }, 
+            {
+            loader: 'postcss-loader',
+            options: {
+                plugins: function () {
+                    return [
+                        require('autoprefixer')({
+                            "overrideBrowserslist": [
+                                ">0.25%",
+                                "not dead"
+                            ]
+                        })
+                    ]
+                }
+            }
+        }, 'sass-loader'],
+        exclude: /node_modules/
+    },
+}
+```
+### **图片/字体文件处理**
+1.安装url-loader, file-loader
+### **处理 html 中的本地图片**
+使用html-withimg-loader可以解决问题，但是会无法使用html模板赋值<%=%><%%>无效，所以建议<img src="<%= require(url) %>">
+### **入口配置**
+```
+entry 字符串 数组或者对象
+
+```
+### **出口配置**
+output {
+    path //编译出来的代码
+    filename // 生成的文件名
+    publicPath // 生成的公共文件名，用于静态文件存在cdn的文件前缀
+}
+### **每次打包前清空dist文件**
+
+
+
 
 
