@@ -7,7 +7,7 @@
 * loader: 模块转换器，用于把模块原内容按照需求转换成新内容
 * 插件(plugins): 扩展插件，在webpack构建流程中的特定时机注入扩展逻辑来改变构建结果或做你想要做的事情
 
-## **工程初始化**
+### **工程初始化**
 先安装webpack, webpack-cli
 ```
 npm install webpack webpack-cli -D
@@ -26,7 +26,7 @@ class Animal {
 最后用npx mode=development webpack 构建，查看构建结果
 或者用npx mode=production webpack 构建，查看构建结果
 
-## **转化js语法（es6->es5,jsx语法转化）**
+### **转化js语法（es6->es5,jsx语法转化）**
 先安装babel-loader
 ```
 npm install babel-loader -D
@@ -93,7 +93,7 @@ module.exports = {
     }
 }
 ```
-## **mode**
+### **mode**
 ```
 module.exports = {
     mode: 'development' | 'production' | 'none
@@ -102,4 +102,69 @@ module.exports = {
 mode=development 时，启动用 NamedChunksPlugin 和 NamedModulesPlugin
 model=production 时， 启动用FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 UglifyJsPlugin
 
-## **在浏览器中查看页面**
+### **在浏览器中查看页面**
+安装html-webpack-plugin
+```
+npm install html-webpack-plugin
+```
+然后使用
+```
+const htmlWebpackPlugin = require('html-webpack-plugin')
+module.exports = {
+    ...
+    plugins: [
+        new htmlWebpackPlugin({
+            template: './index.html',
+            filename: 'index.html',
+            config: {
+                title: '首页'
+            }
+        })
+    ]
+}
+```
+config作用是为模板引擎提供模板数据
+```
+<html>
+    <head>
+        <title><%= htmlWebpackPlugin.options.config.title %></title>
+    </head>
+    <body>
+    </body>
+</html>
+```
+####如何在浏览器实时展示效果
+先安装webpack-dev-server
+```
+npm install webpack-dev-server -D
+```
+修改package.json里的scripts:
+```
+"scripts": {
+    "dev": "NODE_ENV=development webpack-dev-server",
+    "build": "NODE_ENV=production webpack"
+}
+```
+配置webpack.config.js
+```
+//webpack.config.js
+module.exports = {
+    //...
+    devServer: {
+        port: '3000', //默认是8080
+        quiet: false, //默认不启用
+        inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
+        stats: "errors-only", //终端仅打印 error
+        overlay: false, //默认不启用
+        clientLogLevel: "silent", //日志等级
+        compress: true //是否启用 gzip 压缩
+    }
+```
+### **devtool**
+```
+module.exports = {
+    devtool: 'cheap-module-eval-source-map' //开发环境下使用
+}
+```
+
+
